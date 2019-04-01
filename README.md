@@ -6,6 +6,10 @@ El proyecto es un servlet para Apache Tomcat, que almacena la información en fi
 
 Una vez cargada esta información en el servlet, éste podrá resolver las consultas de los usuarios a través de una interfaz web (HTML+CSS) o mediante respuestas XML.
 
+# Compilación 
+
+`javac -classpath %TOMCAT_DIR%/lib/servlet-api.jar Cancion.java Disco.java Version.java InformacionMusical.java`
+
 # Utilización
 Una vez compilado y desplegado el servlet en Tomcat, se podrá acceder a él a través del navegador web, usando como contraseña "pwd": `/IM?p=pwd`. Para obtener las respuestas en XML, añadir el parámetro `?auto=si` a la URL. Para desplegar el servicio en Tomcat, se puede utilizar el archivo `web.xml` aquí presente.
 
