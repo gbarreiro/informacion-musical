@@ -72,7 +72,7 @@ public class InformacionMusical extends HttpServlet {
 	/**
 	 * Inicio de todos los formularios. Crea un formulario que envíe los datos mediante GET al servlet.
 	 */
-	private static final String INICIO_FORM = "<form action=\"P2IM\" method=\"get\">";
+	private static final String INICIO_FORM = "<form action=\"IM\" method=\"get\">";
 
 	/**
 	 * Final de todos los formularios. Etiqueta HTML que cierra el formulario previamente abierto.
