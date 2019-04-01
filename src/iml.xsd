@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="Songs"> <!-- elemento raíz del XML -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="Anio" type="tipoAnio"/> <!-- Obligatorio; solo 1 vez -->
+            <xs:element name="Pais" maxOccurs="unbounded"> <!-- Mínimo 1 país por archivo IML, sin cota superior -->
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Disco" maxOccurs="unbounded"> <!-- Mínimo 1 disco por país, sin cota superior -->
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Titulo" type="xs:string"/>
+                                    
+                                    <xs:element name="Premios" minOccurs="0"> <!-- Premios opcionales -->
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Premio" type="tipoPremio" maxOccurs="3"/> <!-- puede recibir hasta 3 premios -->
+                                            </xs:sequence>   
+                                        </xs:complexType>
+                                    </xs:element>
+
+                                    <xs:element name="Interprete" type="xs:string"/>
+
+                                    <xs:element name="Cancion" maxOccurs="unbounded"> <!-- Mínimo 1 canción por disco, sin cota superior; tipo mixed (puede haber un comentario por el medio) -->
+                                        <xs:complexType mixed="true">
+                                            <xs:sequence>
+                                                <xs:element name="Titulo" type="xs:string"/>
+                                                <xs:element name="Duracion" type="tipoDuracion"/>
+                                                <xs:element name="Genero" type="tipoGenero"/>
+
+                                                <xs:element name="Version" minOccurs="0" maxOccurs="unbounded"> <!-- No tiene por qué haber versiones, y si las hay no existe una cota superior -->
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:choice> <!-- Solo se puede especificar uno de estos 2 elementos -->
+                                                                <xs:element name="Titulo" type="xs:string"/>
+                                                                <xs:element name="Idc" type="tipoIDC"/>
+                                                            </xs:choice>
+                                                            <xs:element name="IML" type="xs:anyURI"/> <!-- La localización del fichero IML es obligatoria -->
+                                                        </xs:sequence>
+                                                        <xs:attribute name="anio" type="xs:positiveInteger" use="required"/>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="idc" type="tipoIDC" use="required"/>
+                                        </xs:complexType>
+                                        
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="idd" type="tipoIDD" use="required"/>
+                                <xs:attribute name="langs" type="tipoLangs"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="pais" type="xs:string" use="required"/>
+                    <xs:attribute name="lang" type="tipoLang" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>  
+
+    <!-- Tipo idioma: 'es', 'en', 'de'... -->
+    <xs:simpleType name="tipoLang">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Tipo idiomas: 'es en', 'de it ru', 'fr'... -->
+    <xs:simpleType name="tipoLangs">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([a-z]{2})(\s[a-z]{2})*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipo año: 2000, 1998... -->
+    <xs:simpleType name="tipoAnio">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1900"/>
+            <xs:maxInclusive value="2018"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipo duración: de 1 a 599 segundos -->
+    <xs:simpleType name="tipoDuracion">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="599"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Identificador de un disco (IDD): XXXX-XXX-XXX -->
+    <xs:simpleType name="tipoIDD">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{4}-\d{3}-\d{3}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Identificador de una canción (IDC): XXXX-XXX-XXX-YY -->
+    <xs:simpleType name="tipoIDC">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{4}-\d{3}-\d{3}-\d{2}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipo de premio a un album: DiscoDeOro, Grammy o LamparaMinera -->
+    <xs:simpleType name="tipoPremio">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DiscoDeOro"/>
+            <xs:enumeration value="Grammy"/>
+            <xs:enumeration value="LamparaMinera"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipo de género de una canción: Rock, Pop, Country o Balada -->
+    <xs:simpleType name="tipoGenero">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Rock"/>
+            <xs:enumeration value="Pop"/>
+            <xs:enumeration value="Country"/>
+            <xs:enumeration value="Balada"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    
+
+
+</xs:schema>

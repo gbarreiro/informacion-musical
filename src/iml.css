@@ -1,0 +1,90 @@
+html{
+    margin-left: 10pt;
+    margin-right: 10pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+
+}
+
+h1{
+    color: #ad5d0d;
+    text-align: center;
+    font-size: 50pt;
+    font-family: fantasy;
+    margin-bottom: 0pt;
+}
+
+h2{
+    color: #ff0080;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30pt;
+    text-align: center;
+    margin-top: 5pt;
+}
+
+h3{
+    color: blue;
+}
+
+a{
+    color: orange;
+}
+
+form{
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    padding-right: 5pt;
+    padding-left: 5pt;
+}
+
+.form_input{
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    margin-right: 5pt;
+    margin-left: 5pt;
+}
+
+#boton_enviar{
+    font-size: 15pt;
+    border-radius: 15pt;
+    width: 70pt;
+    height: 30pt;
+    border-color: aqua;
+    background-color: aquamarine;
+    margin-right: 5pt;
+    margin-left: 5pt;
+}
+
+#boton_home{
+    font-size: 15pt;
+    border-radius: 15pt;
+    width: 80pt;
+    height: 30pt;
+    border-color: sandybrown;
+    background-color: salmon;
+    margin-right: 5pt;
+    margin-left: 5pt;
+}
+
+#boton_atras{
+    font-size: 15pt;
+    border-radius: 15pt;
+    width: 80pt;
+    height: 30pt;
+    border-color: blueviolet;
+    background-color:rebeccapurple;
+    color: white;
+    margin-right: 5pt;
+    margin-left: 5pt;
+}
+
+footer{
+    text-align: center;
+    color: orangered;
+    position: fixed;
+    bottom: 10pt;
+    right: 10pt;
+    font-style: italic;
+    font-family: sans-serif;
+    font-size: 12pt;
+}
