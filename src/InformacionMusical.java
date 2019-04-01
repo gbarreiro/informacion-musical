@@ -92,7 +92,7 @@ public class InformacionMusical extends HttpServlet {
 	/**
 	 * URL del schema XSD.
 	 */
-	private static String URL_XSD = "/p2/iml.xsd";
+	private static String URL_XSD = "iml.xsd";
 
 	/**
 	 * URL del archivo IML base, a partir del cual se van descubriendo el resto a través de las Versiones
@@ -106,7 +106,7 @@ public class InformacionMusical extends HttpServlet {
 	 */
 	public void init (ServletConfig config) {
 		// Empezamos leyendo el fichero inicial, y a partir de él sacamos el resto
-		URL_XSD = config.getServletContext().getRealPath("p2/iml.xsd");
+		URL_XSD = config.getServletContext().getRealPath("iml.xsd");
 		cargarDocumentos(FICHERO_IML_INICIAL);
 		// A partir de aquí, ya podemos procesar peticiones GET de los clientes
 
@@ -141,7 +141,7 @@ public class InformacionMusical extends HttpServlet {
 			out.println("<head>");
 			out.println("<title>Servicio de información musical</title>"); // título de la página
 			out.println("<meta charset=\"utf-8\"/>"); // codificación de la página (UTF-8)
-			out.println("<LINK rel=\"stylesheet\" href=\"p2/iml.css\">"); // hoja de estilos CSS: p2.css
+			out.println("<LINK rel=\"stylesheet\" href=\"iml.css\">"); // hoja de estilos CSS: p2.css
 			out.println("</head>");
 
 			out.println("<body><h1>Servicio de información musical</h1>");
